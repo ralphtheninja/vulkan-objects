@@ -2,6 +2,29 @@
 
 > Breif summary of vulkan objects and how they relate. The order roughly corresponds to the order of creation. The summary is based on the [Vulkan Tutorial](https://vulkan-tutorial.com/).
 
+## Table of Contents
+
+<details><summary>Click to expand</summary>
+
+- [`VkInstance`](#vkinstance)
+- [`VkPhysicalDevice`](#vkphysicaldevice)
+- [`VkSurfaceKHR`](#vksurfacekhr)
+- [`VkDevice`](#vkdevice)
+- [`VkQueue`](#vkqueue)
+- [`VkSwapChainKHR`](#vkswapchainkhr)
+- [`VkImage`](#vkimage)
+- [`VkImageView`](#vkimageview)
+- [`VkRenderPass`](#vkrenderpass)
+- [`VkPipelineLayout`](#vkpipelinelayout)
+- [`VkPipeline`](#vkpipeline)
+- [`VkFramebuffer`](#vkframebuffer)
+- [`VkCommandPool`](#vkcommandpool)
+- [`VkCommandBuffer`](#vkcommandbuffer)
+- [`VkSemaphore`](#vksemaphore)
+- [`VkFence`](#vkfence)
+
+</details>
+
 ## [`VkInstance`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkInstance.html)
 
 The vulkan library is initialized by creating a vulkan instance object. You give vulkan information about your application and whether you want to enable validation layers or not.
