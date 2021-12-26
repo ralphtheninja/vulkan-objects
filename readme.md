@@ -1,6 +1,6 @@
 # vulkan-objects
 
-> Breif summary of vulkan objects and how they relate. The order roughly corresponds to the order of creation. The summary is based on the [Vulkan Tutorial](https://vulkan-tutorial.com/).
+> Brief summary of vulkan objects and how they relate. The order roughly corresponds to the order of creation. The summary is based on the [Vulkan Tutorial](https://vulkan-tutorial.com/).
 
 ## Table of Contents
 
