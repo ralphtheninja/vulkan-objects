@@ -206,8 +206,11 @@ A command pool is needed in order to create command buffers, which are allocated
 
 Command buffers record commands that you want to execute. They are executed by submitting them to a device queue. A command buffer will be automatically freed when their command pool is destroyed. You need one command buffer per frame buffer.
 
+**NOTE** that _if_ the swap chain is re-created, e.g. due to a window resize event, then the command buffers can and need to be freed explicity by a call to `vkFreeCommandBuffers()`.
+
 - Lifetime
   - [`vkAllocateCommandBuffers()`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkAllocateCommandBuffers.html)
+  - [`vkFreeCommandBuffers()`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkFreeCommandBuffers.html)
 - Used in
   - [`vkBeginCommandBuffer()`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkBeginCommandBuffer.html)
   - [`vkCmdBeginRenderPass()`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdBeginRenderPass.html)
