@@ -18,6 +18,8 @@
 - [`VkPipelineLayout`](#vkpipelinelayout)
 - [`VkPipeline`](#vkpipeline)
 - [`VkFramebuffer`](#vkframebuffer)
+- [`VkBuffer`](#vkbuffer)
+- [`VkDeviceMemory`](#vkdevicememory)
 - [`VkCommandPool`](#vkcommandpool)
 - [`VkCommandBuffer`](#vkcommandbuffer)
 - [`VkSemaphore`](#vksemaphore)
@@ -76,7 +78,7 @@ Needed when creating a `VkSwapchainKHR` object (together with the logical device
 
 ## [`VkDevice`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDevice.html)
 
-Handle to a logical device for interfacing with the physical device. This is arguably one of the most used objects and is needed for many different operations, e.g. when creating a `VkSwapChainKHR` object, getting handles to queue families (`VkQueue`), getting handles to swap chain images, creating image views, creating a render pass, creating pipeline layout, creating graphics pipeline, creating a frame buffer, creating a command pool, creating command buffers, creating and operating on synchronization objects (semaphores and fences), acquiring images from the swap chain and creating shader modules.
+Handle to a logical device for interfacing with the physical device. This is arguably one of the most used objects and is needed for many different operations, e.g. when creating a `VkSwapChainKHR` object, getting handles to queue families (`VkQueue`), getting handles to swap chain images, creating image views, creating a render pass, creating pipeline layout, creating graphics pipeline, creating a frame buffer, creating buffers, creating memory for buffers, creating a command pool, creating command buffers, creating and operating on synchronization objects (semaphores and fences), acquiring images from the swap chain and creating shader modules.
 
 Creating a logical device also creates the queues associated with that device.
 
@@ -102,6 +104,11 @@ Creating a logical device also creates the queues associated with that device.
   - [`vkDestroyShaderModule()`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyShaderModule.html)
   - [`vkCreateFrameBuffer()`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateFramebuffer.html)
   - [`vkDestroyFrameBuffer()`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyFramebuffer.html)
+  - [`vkCreateBuffer()`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateBuffer.html)
+  - [`vkDestroyBuffer()`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyBuffer.html)
+  - [`vkAllocateMemory()`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkAllocateMemory.html)
+  - [`vkFreeMemory()`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkFreeMemory.html)
+  - [`vkBindBufferMemory`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkBindBufferMemory.html)
   - [`vkCreateCommandPool()`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateCommandPool.html)
   - [`vkDestroyCommandPool()`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyCommandPool.html)
   - [`vkAllocateCommandBuffers()`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkAllocateCommandBuffers.html)
@@ -192,6 +199,27 @@ Passed into `VkRenderPassBeginInfo` before calling `vkCmdBeginRenderPass()` when
 - Used in
   - [`VkRenderPassBeginInfo struct`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkRenderPassBeginInfo.html)
 
+## [`VkBuffer`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBuffer.html)
+
+A `VkBuffer` can hold arbitrary data, most commonly vertex data.
+
+- Lifetime
+  - [`vkCreateBuffer()`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateBuffer.html)
+  - [`vkDestroyBuffer()`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyBuffer.html)
+- Used in
+  - [`vkGetBufferMemoryRequirements`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetBufferMemoryRequirements.html)
+  - [`vkBindBufferMemory`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkBindBufferMemory.html)
+
+## [`VkDeviceMemory`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDeviceMemory.html)
+
+The actual memory for a e.g. a buffer with vertex data.
+
+- Lifetime
+  - [`vkAllocateMemory()`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkAllocateMemory.html)
+  - [`vkFreeMemory()`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkFreeMemory.html)
+- Used in
+  - [`vkBindBufferMemory`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkBindBufferMemory.html)
+
 ## [`VkCommandPool`](https://khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkCommandPool.html)
 
 A command pool is needed in order to create command buffers, which are allocated from the command pool.
@@ -215,6 +243,7 @@ Command buffers record commands that you want to execute. They are executed by s
   - [`vkBeginCommandBuffer()`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkBeginCommandBuffer.html)
   - [`vkCmdBeginRenderPass()`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdBeginRenderPass.html)
   - [`vkCmdBindPipeline()`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdBindPipeline.html)
+  - [`vkCmdBindVertexBuffers()`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdBindVertexBuffers.html)
   - [`vkCmdDraw()`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdDraw.html)
   - [`vkCmdEndRenderPass()`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdEndRenderPass.html)
   - [`vkEndCommandBuffer()`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkEndCommandBuffer.html)
