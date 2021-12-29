@@ -18,10 +18,10 @@
 - [`VkPipelineLayout`](#vkpipelinelayout)
 - [`VkPipeline`](#vkpipeline)
 - [`VkFramebuffer`](#vkframebuffer)
-- [`VkBuffer`](#vkbuffer)
-- [`VkDeviceMemory`](#vkdevicememory)
 - [`VkCommandPool`](#vkcommandpool)
 - [`VkCommandBuffer`](#vkcommandbuffer)
+- [`VkBuffer`](#vkbuffer)
+- [`VkDeviceMemory`](#vkdevicememory)
 - [`VkSemaphore`](#vksemaphore)
 - [`VkFence`](#vkfence)
 
@@ -199,30 +199,9 @@ Passed into `VkRenderPassBeginInfo` before calling `vkCmdBeginRenderPass()` when
 - Used in
   - [`VkRenderPassBeginInfo struct`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkRenderPassBeginInfo.html)
 
-## [`VkBuffer`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBuffer.html)
-
-A `VkBuffer` can hold arbitrary data, most commonly vertex data.
-
-- Lifetime
-  - [`vkCreateBuffer()`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateBuffer.html)
-  - [`vkDestroyBuffer()`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyBuffer.html)
-- Used in
-  - [`vkGetBufferMemoryRequirements`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetBufferMemoryRequirements.html)
-  - [`vkBindBufferMemory`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkBindBufferMemory.html)
-
-## [`VkDeviceMemory`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDeviceMemory.html)
-
-The actual memory for a e.g. a buffer with vertex data.
-
-- Lifetime
-  - [`vkAllocateMemory()`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkAllocateMemory.html)
-  - [`vkFreeMemory()`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkFreeMemory.html)
-- Used in
-  - [`vkBindBufferMemory`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkBindBufferMemory.html)
-
 ## [`VkCommandPool`](https://khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkCommandPool.html)
 
-A command pool is needed in order to create command buffers, which are allocated from the command pool.
+A command pool is needed in order to create command buffers, which are allocated from the command pool. In case buffers need to be copied on the device, the command pool needs to be created before this since `vkCmdCopyBuffer()` needs a command buffer which in turn is allocated from a command pool.
 
 - Lifetime
   - [`vkCreateCommandPool()`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateCommandPool.html)
@@ -247,6 +226,27 @@ Command buffers record commands that you want to execute. They are executed by s
   - [`vkCmdDraw()`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdDraw.html)
   - [`vkCmdEndRenderPass()`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCmdEndRenderPass.html)
   - [`vkEndCommandBuffer()`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkEndCommandBuffer.html)
+
+## [`VkBuffer`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkBuffer.html)
+
+A `VkBuffer` can hold arbitrary data, most commonly vertex data.
+
+- Lifetime
+  - [`vkCreateBuffer()`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkCreateBuffer.html)
+  - [`vkDestroyBuffer()`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkDestroyBuffer.html)
+- Used in
+  - [`vkGetBufferMemoryRequirements`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkGetBufferMemoryRequirements.html)
+  - [`vkBindBufferMemory`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkBindBufferMemory.html)
+
+## [`VkDeviceMemory`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkDeviceMemory.html)
+
+The actual memory for a e.g. a buffer with vertex data.
+
+- Lifetime
+  - [`vkAllocateMemory()`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkAllocateMemory.html)
+  - [`vkFreeMemory()`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkFreeMemory.html)
+- Used in
+  - [`vkBindBufferMemory`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/vkBindBufferMemory.html)
 
 ## [`VkSemaphore`](https://khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VkSemaphore.html)
 
